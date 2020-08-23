@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-08-23T19:29:12.523Z",
+    "end": "2020-08-23T19:29:29.589Z",
+    "duration": 17066,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e68819e8-ce77-43d6-8f49-2c6365355856",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0f9cc459-aad7-4ccc-ab0f-78aba7912c65",
+          "title": "e2e angular automation framework",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Fill out input from fixture file",
+              "fullTitle": "e2e angular automation framework Fill out input from fixture file",
+              "timedOut": null,
+              "duration": 4751,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var homePage = new _HomePage.default();\ncy.visit(Cypress.env('url') + \"angularpractice\");\nhomePage.nameBox().type(this.data.name);\nhomePage.emailBox().type(this.data.email).should('have.value', 'virginia.rubio@hotmail.com');\nhomePage.passwordBox().type(this.data.password);\nhomePage.likeIceCreamCheckBox().check().should('be.checked');\nhomePage.genderDropDown().select(this.data.gender).should('have.value', 'Female');\nhomePage.studentStatusRadio().check().should('be.checked').and('have.value', 'option1');\nhomePage.date().type(this.data.dob); //Validate\nhomePage.automaticNameBox().should('have.value', this.data.name);\nhomePage.nameBox().should('have.attr', 'minlength', '2');\nhomePage.disabledRadioButton().should('not.be.checked').and('be.disabled');",
+              "err": {},
+              "uuid": "8c7ba0c0-ed1a-4320-83a3-c66492501f7c",
+              "parentUUID": "0f9cc459-aad7-4ccc-ab0f-78aba7912c65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Navigate to the shop and add an item",
+              "fullTitle": "e2e angular automation framework Navigate to the shop and add an item",
+              "timedOut": null,
+              "duration": 3733,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var homePage = new _HomePage.default();\nvar shopPage = new _ShopPage.default();\nvar checkout = new _Checkout.default();\nvar purchasePage = new _PurchasePage.default();\nhomePage.shopTab().click();\ncy.url().should('include', 'shop');\nthis.data.productName.forEach(function (element) {\n  cy.selectProduct(element);\n});\nshopPage.checkoutButton().click(); //total amount at checkout\nvar sum = 0;\nvar total = 0;\ncheckout.pricePerItemTable().each(function ($el, index, $list) {\n  var price = $el.text();\n  var strPrecio = price.split(\" \");\n  strPrecio = strPrecio[1].trim();\n  sum = Number(sum) + Number(strPrecio);\n}).then(function () {\n  cy.log(sum);\n});\ncheckout.totalPrice().then(function (element) {\n  var price = element.text();\n  total = price.split(\" \");\n  total = total[1].trim();\n}); //Compare total value is sum\nexpect(Number(total)).to.equal(sum);\ncheckout.finalCheckoutButton().click();\npurchasePage.countryBox().type(this.data.country).should('have.value', 'United Kingdom');\npurchasePage.termsConditionsBox().click(); //.should('be.checked')\npurchasePage.purchaseButton().click(); //purchasePage.alert().should('contain.text','\\n          ×\\n          Success! Thank you! Your order will be delivered in next few weeks :-).\\n')\n//Another way -> Regular expression\npurchasePage.alert().then(function (element) {\n  var textAlert = element.text();\n  expect(textAlert.includes(\"Success\")).to.be.true;\n});",
+              "err": {},
+              "uuid": "8347fb13-f3d4-4e36-ad8e-43d3dd897f1b",
+              "parentUUID": "0f9cc459-aad7-4ccc-ab0f-78aba7912c65",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8c7ba0c0-ed1a-4320-83a3-c66492501f7c",
+            "8347fb13-f3d4-4e36-ad8e-43d3dd897f1b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8484,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.1.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {},
+      "version": "5.1.0"
+    }
+  }
+}

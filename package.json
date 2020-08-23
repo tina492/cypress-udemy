@@ -1,0 +1,28 @@
+{
+  "name": "cypress-udemy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ".//node_modules//.bin//cypress run",
+    "headed": "npm run test -- --headed",
+    "chrome": "npm run headed -- --browser chrome",
+    "framework": "npm run chrome -- --spec cypress/integration/examples/cypress_Framework_with_Fixture.spec.js",
+    "dashboard": "npm run test -- --chrome --spec cypress/integration/examples/cypress_Framework_with_Fixture.spec.js --key 66c9dc57-0aec-40c9-ad89-85f852ced7b2",
+    "mocha": "npm run test -- --spec cypress/integration/examples/cypress_Framework_with_Fixture.spec.js --reporter mochawesome",
+    "automationpractice": "npm run test -- --spec \"cypress/integration/AutomationPractice/*\"",
+    "ryanair": "npm run test -- --spec \"cypress/integration/Ryanair/*\"",
+    "seleniumpractice": "npm run test -- --spec \"cypress/integration/SeleniumPractice/*\"",
+    "angularpractice": "npm run test -- --spec \"cypress/integration/AngularPractice/*\""
+  },
+  "keywords": [],
+  "author": "Virginia Rubio",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^3.4.1",
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^8.1.1",
+    "mochawesome": "^6.1.1",
+    "mochawesome-report-generator": "^5.1.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Virginia de los palotes",
+  "password": "password",
+  "email": "virginia.rubio@hotmail.com",
+  "gender": "Female",
+  "productName": ["Blackberry","Nokia"],
+  "country" : "United Kingdom",
+  "dob" : "1987-06-07"
+}
